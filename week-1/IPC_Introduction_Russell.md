@@ -1,28 +1,25 @@
 Inter-Process Communication (IPC)
 
-IPC (Inter-Process Communication) is a mechanism used by processes to send and receive data or messages while they are running.
+IPC (Inter-Process Communication) is a way for processes to communicate with each other by sending and receiving data or messages while they are running.
 
- 1. Need for IPC
+Need for IPC
+- IPC is needed when different processes have to work together.
+- Communication: Different processes may need to exchange information while doing a task.
+- Data sharing: One process may create data that another process needs.
+- Resource sharing: More than one process may need to use the same system resources.
+- Coordination: Some processes depend on the work of other processes.
+- Synchronization: Processes need to work in the right order to avoid conflicts.
 
-- Communication: Processes communicate because different processes may perform different parts of a task.
-- Data sharing: Processes share data because one process may produce data that another process needs.
-- Resource sharing: Processes share resources because resources may need to be used by multiple processes.
-- Coordination: Processes coordinate because their tasks may depend on each other.
-- Synchronization: Processes synchronize because they must execute in the correct order and avoid conflicts.
+Importance of IPC
+- Makes it easier for processes to work together.
+- Helps in multitasking by allowing processes to run and communicate at the same time.
+- Makes resource sharing easier.
+- Helps processes stay coordinated with each other.
+- Helps in completing larger tasks by dividing the work between processes.
 
- 2. Importance of IPC
-
-- Improves efficiency by allowing processes to work together.
-- Supports multitasking by enabling processes to work concurrently.
-- Improves resource utilization through resource sharing.
-- Ensures coordination between processes.
-- Helps complete complex tasks by dividing work among processes.
-
- 3. Basic Working of IPC – Client-Server
-
-- Client sends a request to the **Server** through IPC.
-- Server receives and processes the request.
-- Server sends the response back through IPC.
+Basic Working of IPC – Client-Server
+- Client sends a request to the Server using IPC.
+- Server receives the request and processes it.
+- Server sends the required response back using IPC.
 - Client receives the response and continues its work.
-
  
