@@ -1,4 +1,4 @@
- ## Inter-Process Communication (IPC)
+Inter-Process Communication (IPC)
 
 IPC (Inter-Process Communication) is a mechanism used by processes to send and receive data or messages while they are running.
 
