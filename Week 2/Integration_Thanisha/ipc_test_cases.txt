@@ -1,4 +1,4 @@
-IPC Test Cases
+IPC Test Cases:
 
 The multi-process simulator was tested using POSIX message queues between the UI Process, Core Process, and Logging Process.
 
@@ -50,6 +50,5 @@ Actual Result: UI, Core, and Logging Process shut down successfully.
 Status: PASS
 
 
-Result
-
+Result:
 All tested IPC communication paths between the UI Process, Core Process, and Logging Process worked successfully.
