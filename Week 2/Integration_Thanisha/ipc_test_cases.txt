@@ -1,0 +1,55 @@
+IPC Test Cases
+
+The multi-process simulator was tested using POSIX message queues between the UI Process, Core Process, and Logging Process.
+
+IPC-01 – UI to Core communication
+Input: STORE 0 10
+Actual Result: UI received "CORE: Memory[0] = 10"; Core processed the command.
+Status: PASS
+
+
+IPC-02 – Core to UI communication
+Input: READ 0
+Actual Result: UI received "CORE: Memory[0] = 10".
+Status: PASS
+
+
+IPC-03 – Core to Logging Process
+Input: PUSH 25
+Actual Result: Logging Process received and recorded the command and result.
+Status: PASS
+
+
+IPC-04 – Error communication
+Input: READ 101
+Actual Result: UI received "CORE: Invalid memory address"; Logging Process recorded the error.
+Status: PASS
+
+
+IPC-05 – Stack operation through Core
+Input: PUSH 25 → POP
+Actual Result: UI received "Pushed 25" and "Popped 25".
+Status: PASS
+
+
+IPC-06 – Queue operation through Core
+Input: ENQUEUE 30 → DEQUEUE
+Actual Result: UI received "Enqueued 30" and "Dequeued 30".
+Status: PASS
+
+
+IPC-07 – Multiple sequential commands
+Input: Multiple commands
+Actual Result: Commands were processed sequentially and corresponding results were returned and logged.
+Status: PASS
+
+
+IPC-08 – Shutdown communication
+Input: exit
+Actual Result: UI, Core, and Logging Process shut down successfully.
+Status: PASS
+
+
+Result
+
+All tested IPC communication paths between the UI Process, Core Process, and Logging Process worked successfully.
