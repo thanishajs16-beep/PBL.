@@ -1,0 +1,95 @@
+PERFORMANCE ANALYSIS:
+
+1. BENCHMARK SETUP
+
+The simulator was tested using a standalone Core and the multi-process simulator.
+
+Number of runs: 5
+Workload repetitions per run: 1000
+
+Standalone:
+Core executed without the multi-process IPC setup.
+
+Multi-Process:
+UI, Core, and Logging processes operated using POSIX Message Queues.
+
+The same workload was used for both configurations to provide a fair comparison.
+
+
+2. EXECUTION TIME RESULTS
+
+Configuration             Total Time       Average Time
+-------------------------------------------------------
+Standalone Core            0 sec*           0 sec*
+Multi-Process Simulator    1.61 sec         0.322 sec
+
+* The standalone execution completed below the timing resolution
+  displayed by the benchmark script, so it was reported as 0.00 sec.
+
+The multi-process simulator took an average of 0.322 seconds per run.
+
+
+3. CPU AND MEMORY USAGE
+
+3.1 STANDALONE
+
+Measurement                  Result
+-------------------------------------
+User time                    0.00 sec
+System time                  0.00 sec
+CPU usage                    60%
+Maximum resident memory      7552 KB
+
+
+3.2 MULTI-PROCESS
+
+Process              CPU Usage       Memory (RSS)
+--------------------------------------------------
+Core Process         35.4%           1960 KB
+Logging Process      23.1%           1760 KB
+
+
+4. IPC OVERHEAD
+
+The measured average time for the multi-process simulator was
+0.322 seconds, while the standalone execution was reported as
+0 seconds.
+
+The benchmark script therefore could not calculate a valid IPC
+overhead percentage because the standalone measurement was zero
+at the displayed timing resolution.
+
+The script reported:
+
+IPC overhead            : 0.322 sec
+IPC overhead percentage : %
+
+The exact percentage is therefore not reported, rather than
+estimating or inventing a value.
+
+
+5. PERFORMANCE COMPARISON
+
+The standalone version completed below the timer's displayed
+resolution, while the multi-process version required measurable
+execution time because it involves multiple processes and IPC
+communication.
+
+The multi-process version also introduces additional process
+and message-queue activity. This overhead is expected in a
+multi-process architecture and is a trade-off for process
+separation and independent UI, Core, and Logging components.
+
+
+6. CONCLUSION
+
+The benchmark demonstrates that the multi-process simulator
+successfully performs the workload with measurable IPC and
+process-management overhead.
+
+Using 1000 workload repetitions across 5 runs provides a
+consistent basis for comparing the two configurations.
+
+The results show the expected additional execution cost of the
+multi-process architecture while demonstrating the successful
+operation of the integrated simulator.
