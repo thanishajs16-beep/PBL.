@@ -1,6 +1,6 @@
 # Multi-Process Simulator & IPC
 
-## Project Overview
+ Project Overview
 
 This project is a multi-process CPU and memory simulator implemented in C on Linux.
 
@@ -12,7 +12,7 @@ The system is divided into three independent processes:
 
 The processes communicate using **POSIX Message Queues (IPC)**.
 
-## System Architecture
+ System Architecture
 
 ```text
                          User
@@ -80,7 +80,7 @@ Detailed IPC selection and justification are documented in:
 
 `IPC_JUSTIFICATION.md`
 
-## Supported Commands
+Supported Commands
 
 ```text
 ADD a b
@@ -96,23 +96,23 @@ READ address
 exit
 ```
 
-## How to Run
+How to Run
 
 Open three terminal windows in the project directory.
 
-### Terminal 1 — Logging Process
+Terminal 1 — Logging Process
 
 ```bash
 ./logging_process
 ```
 
-### Terminal 2 — Core Process
+Terminal 2 — Core Process
 
 ```bash
 ./core_process
 ```
 
-### Terminal 3 — UI Process
+Terminal 3 — UI Process
 
 ```bash
 ./ui_process
@@ -120,7 +120,7 @@ Open three terminal windows in the project directory.
 
 Start the processes in this order so that the Core Process can connect to the Logging Process before accepting UI commands.
 
-## Example Test
+Example Test
 
 ```text
 UI > STORE 0 10
@@ -149,7 +149,7 @@ UI > exit
 
 The corresponding operations and error condition are also received by the Logging Process and stored in `simulator.log`.
 
-## IPC Testing
+IPC Testing
 
 The integrated system was tested for:
 
@@ -167,7 +167,7 @@ Detailed test cases are available in:
 
 `IPC_TEST_CASES.md`
 
-## Performance Analysis
+Performance Analysis
 
 The project also compares the standalone simulator with the multi-process version.
 
@@ -182,7 +182,7 @@ The benchmark results and observations are documented in:
 
 `PERFORMANCE_ANALYSIS.md`
 
-## Logging
+Logging
 
 The Logging Process writes system activity to:
 
@@ -215,10 +215,10 @@ Example error log entry:
 
 | File | Description |
 |---|---|
-| `ARCHITECTURE.md` | Overall system architecture |
-| `IPC_JUSTIFICATION.md` | Reason for selecting POSIX Message Queues |
-| `IPC_TEST_CASES.md` | IPC integration test cases and results |
-| `PERFORMANCE_ANALYSIS.md` | Standalone vs multi-process performance comparison |
+| `architecture_diagram` | Overall system architecture |
+| `ipc_justification.md` | Reason for selecting POSIX Message Queues |
+| `ipc_test_cases.txt` | IPC integration test cases and results |
+| `Performance_analysis.txt` | Standalone vs multi-process performance comparison |
 
 ## Conclusion
 
