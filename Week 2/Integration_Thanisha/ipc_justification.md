@@ -1,12 +1,12 @@
-# IPC Justification
+ IPC Justification
 
-## 1. Selected IPC Mechanism
+1. Selected IPC Mechanism
 
 The Multi-Process Simulator uses **POSIX Message Queues** for Inter-Process Communication (IPC).
 
 POSIX Message Queues allow the independent UI, Core, and Logging processes to exchange messages without directly sharing their memory.
 
-## 2. Why POSIX Message Queues Were Selected
+2. Why POSIX Message Queues Were Selected
 
 POSIX Message Queues were selected because they are well suited to the message-based communication required by the simulator.
 
@@ -18,7 +18,7 @@ The main reasons are:
 - **Safe data exchange:** Processes communicate through messages instead of directly accessing each other's memory.
 - **Suitable for this project:** The simulator mainly exchanges commands, results, and log messages, making message queues a suitable choice.
 
-## 3. IPC Communication in the Project
+3. IPC Communication in the Project
 
 The system uses three POSIX Message Queues:
 
@@ -28,7 +28,7 @@ The system uses three POSIX Message Queues:
 /expression_logger
 ```
 
-### UI → Core
+UI → Core
 
 The UI Process sends user commands to the Core Process through the request queue.
 
@@ -43,7 +43,7 @@ UI Process
 Core Process
 ```
 
-### Core → UI
+ Core → UI
 
 The Core Process sends the result of the processed command back to the UI Process through the response queue.
 
@@ -58,7 +58,7 @@ Core Process
 UI Process
 ```
 
-### Core → Logging Process
+Core → Logging Process
 
 The Core Process sends command results and errors to the Logging Process through the logger queue.
 
@@ -73,7 +73,7 @@ Core Process
 Logging Process
 ```
 
-## 4. Comparison with Other IPC Methods
+4. Comparison with Other IPC Methods
 
 | IPC Method           | Advantages                                                                       | Limitations for This Project                                   |
 | -------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------- |
@@ -83,7 +83,7 @@ Logging Process
 
 For this simulator, the amount of data exchanged between processes is small and mainly consists of commands, results, and log messages. Therefore, the advantages of POSIX Message Queues make them appropriate for this project.
 
-## 5. Conclusion
+5. Conclusion
 
 POSIX Message Queues provide a suitable IPC mechanism for the Multi-Process Simulator. They allow the UI, Core, and Logging processes to communicate independently while maintaining clear separation of responsibilities.
 
