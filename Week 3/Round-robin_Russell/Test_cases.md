@@ -1,23 +1,39 @@
-## TEST CASE 1
+# Week 3 – Process Scheduling
+## Student 3: Round Robin Scheduling
+  
+**Algorithm:** Round Robin (RR)
 
-Number of processes (1-100): 3
+---
 
-Enter Process ID for process 1: 1
-Enter Arrival Time: 0
-Enter Burst Time: 5
-Enter Priority: 2
+## Test Case 1: All Processes Arrive at Time 0
 
-Enter Process ID for process 2: 2
-Enter Arrival Time: 0
-Enter Burst Time: 3
-Enter Priority: 1
+### Input
 
-Enter Process ID for process 3: 3
-Enter Arrival Time: 0
-Enter Burst Time: 1
-Enter Priority: 3
-Enter Time Quantum: 2
+Number of processes: `3`
 
+**Process 1**
+- Process ID: 1
+- Arrival Time: 0
+- Burst Time: 5
+- Priority: 2
+
+**Process 2**
+- Process ID: 2
+- Arrival Time: 0
+- Burst Time: 3
+- Priority: 1
+
+**Process 3**
+- Process ID: 3
+- Arrival Time: 0
+- Burst Time: 1
+- Priority: 3
+
+**Time Quantum:** 2
+
+### Sample Output
+
+```text
 Gantt chart:
 0 -- P1 -- 2 -- P2 -- 4 -- P3 -- 5 -- P1 -- 7 -- P2 -- 8 -- P1 -- 9
 
@@ -33,30 +49,41 @@ Total elapsed time: 9
 CPU busy time: 9
 CPU idle time: 0
 CPU Utilization: 100.00%
+```
 
+**Result:** The algorithm correctly schedules all three processes using a time quantum of 2.
 
+---
 
-TEST CASE 2
+## Test Case 2: Different Arrival Times and Initial CPU Idle Time
 
+### Input
 
-Number of processes (1-100): 3
+Number of processes: `3`
 
-Enter Process ID for process 1: 1
-Enter Arrival Time: 2
-Enter Burst Time: 4
-Enter Priority: 2
+**Process 1**
+- Process ID: 1
+- Arrival Time: 2
+- Burst Time: 4
+- Priority: 2
 
-Enter Process ID for process 2: 2
-Enter Arrival Time: 3
-Enter Burst Time: 3
-Enter Priority: 1
+**Process 2**
+- Process ID: 2
+- Arrival Time: 3
+- Burst Time: 3
+- Priority: 1
 
-Enter Process ID for process 3: 3
-Enter Arrival Time: 6
-Enter Burst Time: 2
-Enter Priority: 3
-Enter Time Quantum: 2
+**Process 3**
+- Process ID: 3
+- Arrival Time: 6
+- Burst Time: 2
+- Priority: 3
 
+**Time Quantum:** 2
+
+### Sample Output
+
+```text
 Gantt chart:
 0 -- IDLE -- 2 -- P1 -- 4 -- P2 -- 6 -- P1 -- 8 -- P3 -- 10 -- P2 -- 11
 
@@ -72,32 +99,47 @@ Total elapsed time: 11
 CPU busy time: 9
 CPU idle time: 2
 CPU Utilization: 81.82%
+```
 
-Test Case 3
+**Result:** The algorithm correctly handles different arrival times and calculates CPU idle time and utilization.
 
-Number of processes (1-100): 4
+---
 
-Enter Process ID for process 1: 1
-Enter Arrival Time: 0
-Enter Burst Time: 2
-Enter Priority: 1
+## Test Case 3: Four Processes with an Intermediate CPU Idle Period
 
-Enter Process ID for process 2: 2 
-Enter Arrival Time: 1
-Enter Burst Time: 1
-Enter Priority: 2
+### Input
 
-Enter Process ID for process 3: 3
-Enter Arrival Time: 8
-Enter Burst Time: 3
-Enter Priority: 3
+Number of processes: `4`
 
-Enter Process ID for process 4: 4
-Enter Arrival Time: 10
-Enter Burst Time: 2
-Enter Priority: 4
-Enter Time Quantum: 2
+**Process 1**
+- Process ID: 1
+- Arrival Time: 0
+- Burst Time: 2
+- Priority: 1
 
+**Process 2**
+- Process ID: 2
+- Arrival Time: 1
+- Burst Time: 1
+- Priority: 2
+
+**Process 3**
+- Process ID: 3
+- Arrival Time: 8
+- Burst Time: 3
+- Priority: 3
+
+**Process 4**
+- Process ID: 4
+- Arrival Time: 10
+- Burst Time: 2
+- Priority: 4
+
+**Time Quantum:** 2
+
+### Sample Output
+
+```text
 Gantt chart:
 0 -- P1 -- 2 -- P2 -- 3 -- IDLE -- 8 -- P3 -- 10 -- P4 -- 12 -- P3 -- 13
 
@@ -114,3 +156,12 @@ Total elapsed time: 13
 CPU busy time: 8
 CPU idle time: 5
 CPU Utilization: 61.54%
+```
+
+**Result:** The algorithm correctly handles four processes, including an intermediate CPU idle period, and calculates the scheduling metrics.
+
+---
+
+## Conclusion
+
+All three test cases verify Round Robin scheduling, including the Gantt chart, scheduling metrics, and CPU utilization.
