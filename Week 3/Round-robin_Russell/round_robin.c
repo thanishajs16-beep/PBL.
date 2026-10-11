@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #define MAX 100
 
@@ -40,28 +39,36 @@ int main(void)
     }
 
     for (int i = 0; i < n; i++) {
-        printf("\nEnter Process ID for process %d: ", i + 1);
-        if (scanf("%d", &p[i].id) != 1) return 1;
+        int duplicate;
 
-        printf("Enter Arrival Time: ");
+        do {
+            duplicate = 0;
+
+            printf("\nEnter Process ID for process %d: ", i + 1);
+            if (scanf("%d", &p[i].id) != 1) return 1;
+
+            for (int j = 0; j < i; j++) {
+                if (p[i].id == p[j].id) {
+                    printf("Process IDs must be unique. Try again.\n");
+                    duplicate = 1;
+                    break;
+                }
+            }
+        } while (duplicate);
+
+        printf("Enter Arrival Time for process %d: ", i + 1);
         if (scanf("%lld", &p[i].at) != 1) return 1;
 
-        printf("Enter Burst Time: ");
+        printf("Enter Burst Time for process %d: ", i + 1);
         if (scanf("%lld", &p[i].bt) != 1) return 1;
 
-        printf("Enter Priority: ");
+        printf("Enter Priority for process %d: ", i + 1);
         if (scanf("%d", &p[i].priority) != 1) return 1;
 
         if (p[i].id <= 0 || p[i].at < 0 || p[i].bt <= 0) {
             printf("Invalid process details.\n");
             return 1;
         }
-
-        for (int j = 0; j < i; j++)
-            if (p[i].id == p[j].id) {
-                printf("Process IDs must be unique.\n");
-                return 1;
-            }
 
         p[i].rem = p[i].bt;
         p[i].rt = -1;
