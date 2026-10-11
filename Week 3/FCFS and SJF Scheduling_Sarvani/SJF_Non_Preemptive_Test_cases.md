@@ -8,60 +8,76 @@
 
 ### Input
 
-Number of processes: `3`
+```text
+Number of processes: 3
 
-| Process ID | Arrival Time | Burst Time |
-|---|---:|---:|
-| P1 | 0 | 6 |
-| P2 | 0 | 2 |
-| P3 | 0 | 4 |
+Enter process ID for process 1: P1
+Enter AT for process 1: 0
+Enter BT for process 1: 5
+
+Enter process ID for process 2: P2
+Enter AT for process 2: 0
+Enter BT for process 2: 3
+
+Enter process ID for process 3: P3
+Enter AT for process 3: 0
+Enter BT for process 3: 1
+```
 
 ### Sample Output
 
 ```text
 Gantt chart:
-0 -- P2 -- 2 -- P3 -- 6 -- P1 -- 12
+0 -- P3 -- 1 -- P2 -- 4 -- P1 -- 9
 
 PID    AT    BT    CT    TAT    WT    RT
-P1     0     6     12    12     6     6
-P2     0     2     2     2      0     0
-P3     0     4     6     6      2     2
+P1     0     5     9     9      4     4
+P2     0     3     4     4      1     1
+P3     0     1     1     1      0     0
 
-Average Waiting Time: 2.67
-Average Turnaround Time: 6.67
-Average Response Time: 2.67
+Average Waiting Time: 1.67
+Average Turnaround Time: 4.67
+Average Response Time: 1.67
 ```
 
 **Result:** The process with the shortest burst time executes first.
 
 ---
 
-## Test Case 2: A Shorter Process Arrives Later
+## Test Case 2: Processes Arrive at Different Times
 
 ### Input
 
-Number of processes: `3`
+```text
+Number of processes: 3
 
-| Process ID | Arrival Time | Burst Time |
-|---|---:|---:|
-| P1 | 0 | 7 |
-| P2 | 2 | 3 |
-| P3 | 3 | 1 |
+Enter process ID for process 1: P1
+Enter AT for process 1: 0
+Enter BT for process 1: 7
+
+Enter process ID for process 2: P2
+Enter AT for process 2: 2
+Enter BT for process 2: 4
+
+Enter process ID for process 3: P3
+Enter AT for process 3: 4
+Enter BT for process 3: 1
+```
 
 ### Sample Output
 
 ```text
 Gantt chart:
-0 -- P1 -- 7 -- P3 -- 8 -- P2 -- 11
+0 -- P1 -- 7 -- P3 -- 8 -- P2 -- 12
 
 PID    AT    BT    CT    TAT    WT    RT
 P1     0     7     7     7      0     0
-P2     2     3     11    9      6     6
-P3     3     1     8     5      4     4
+P2     2     4     12    10     6     6
+P3     4     1     8     4      3     3
 
-Average Waiting Time: 3.33
+Average Waiting Time: 3.00
 Average Turnaround Time: 7.00
-Average Response Time: 3.33
+Average Response Time: 3.00
 ```
 
-**Result:** Once P1 starts, it completes before the shorter processes that arrive later can execute.
+**Result:** Once a process starts, it continues until completion. The shortest available process is selected next.

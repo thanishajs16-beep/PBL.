@@ -8,13 +8,21 @@
 
 ### Input
 
-Number of processes: `3`
+```text
+Number of processes: 3
 
-| Process ID | Arrival Time | Burst Time |
-|---|---:|---:|
-| P1 | 0 | 5 |
-| P2 | 0 | 3 |
-| P3 | 0 | 1 |
+Enter process ID for process 1: P1
+Enter AT for process 1: 0
+Enter BT for process 1: 5
+
+Enter process ID for process 2: P2
+Enter AT for process 2: 0
+Enter BT for process 2: 3
+
+Enter process ID for process 3: P3
+Enter AT for process 3: 0
+Enter BT for process 3: 1
+```
 
 ### Sample Output
 
@@ -40,13 +48,21 @@ Average Response Time: 4.33
 
 ### Input
 
-Number of processes: `3`
+```text
+Number of processes: 3
 
-| Process ID | Arrival Time | Burst Time |
-|---|---:|---:|
-| P1 | 0 | 4 |
-| P2 | 2 | 3 |
-| P3 | 6 | 2 |
+Enter process ID for process 1: P1
+Enter AT for process 1: 0
+Enter BT for process 1: 4
+
+Enter process ID for process 2: P2
+Enter AT for process 2: 2
+Enter BT for process 2: 3
+
+Enter process ID for process 3: P3
+Enter AT for process 3: 6
+Enter BT for process 3: 2
+```
 
 ### Sample Output
 
