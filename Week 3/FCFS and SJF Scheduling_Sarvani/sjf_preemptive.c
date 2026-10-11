@@ -1,6 +1,6 @@
 
 #include <stdio.h>
-
+#include<string.h>
 #define MAX 100
 
 typedef struct {
@@ -23,11 +23,22 @@ int main(void) {
 
     for (int i = 0; i < n; i++) {
        
-printf("\nEnter process ID for process %d: ", i + 1);
-if (scanf("%d", &p[i].pid) != 1) {
-    printf("Invalid process ID.\n");
-    return 1;
-}
+int unique;
+
+do {
+    unique = 1;
+
+       printf("Enter process ID for process %d: ", i + 1);
+    scanf("%d", &p[i].pid);
+
+    for (int j = 0; j < i; j++) {
+        if (p[i].pid == p[j].pid) {
+            printf("Error: Process ID must be unique. Try again.\n");
+            unique = 0;
+            break;
+        }
+    }
+} while (!unique);
 
 printf("Enter AT for process %d: ", i + 1);
 if (scanf("%d", &p[i].at) != 1 || p[i].at < 0) {
