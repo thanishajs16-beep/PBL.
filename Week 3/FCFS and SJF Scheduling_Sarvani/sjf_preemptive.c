@@ -22,17 +22,24 @@ int main(void) {
     }
 
     for (int i = 0; i < n; i++) {
-        p[i].pid = i + 1;
+       
+printf("\nEnter process ID for process %d: ", i + 1);
+if (scanf("%d", &p[i].pid) != 1) {
+    printf("Invalid process ID.\n");
+    return 1;
+}
 
-        printf("Enter arrival time and burst time for P%d: ",
-               p[i].pid);
+printf("Enter AT for process %d: ", i + 1);
+if (scanf("%d", &p[i].at) != 1 || p[i].at < 0) {
+    printf("Invalid arrival time.\n");
+    return 1;
+}
 
-        if (scanf("%d %d", &p[i].at, &p[i].bt) != 2 ||
-            p[i].at < 0 || p[i].bt <= 0) {
-            printf("Invalid input.\n");
-            return 1;
-        }
-
+printf("Enter BT for process %d: ", i + 1);
+if (scanf("%d", &p[i].bt) != 1 || p[i].bt <= 0) {
+    printf("Invalid burst time.\n");
+    return 1;
+}
         remaining[i] = p[i].bt;
         firstStart[i] = -1;
     }
