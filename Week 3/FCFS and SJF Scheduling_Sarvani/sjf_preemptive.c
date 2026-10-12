@@ -56,40 +56,73 @@ if (scanf("%d", &p[i].bt) != 1 || p[i].bt <= 0) {
     }
 
     printf("\nGantt Chart:\n");
+      int lastProcess = -1;
+      int segmentStart = time;
+    
+while (completed < n) {
+    int best = -1;
 
-    while (completed < n) {
-        int best = -1;
-
-        for (int i = 0; i < n; i++) {
-            if (remaining[i] > 0 && p[i].at <= time &&
-                (best == -1 ||
-                 remaining[i] < remaining[best] ||
-                (remaining[i] == remaining[best] &&
-                 p[i].at < p[best].at))) {
-                best = i;
-            }
-        }
-
-        if (best == -1) {
-            printf("| IDLE ");
-            time++;
-            continue;
-        }
-
-        if (firstStart[best] == -1) {
-            firstStart[best] = time;
-            p[best].rt = time - p[best].at;
-        }
-
-       printf("%d -- P%d -- ", time, p[best].pid);
-       remaining[best]--;
-       time++;
-        if (remaining[best] == 0) {
-            p[best].ct = time;
-            completed++;
+    for (int i = 0; i < n; i++) {
+        if (remaining[i] > 0 && p[i].at <= time &&
+            (best == -1 ||
+             remaining[i] < remaining[best] ||
+             (remaining[i] == remaining[best] &&
+              p[i].at < p[best].at))) {
+            best = i;
         }
     }
-   printf("%d\n", time);
+
+    if (best == -1) {
+        if (lastProcess != -2) {
+            if (lastProcess != -1)
+                printf("%d -- ", time);
+
+            if (best == -1) {
+    if (lastProcess != -2) {
+        if (lastProcess != -1)
+            printf("%d -- ", time);
+
+        printf("IDLE -- ");
+        lastProcess = -2;
+    }
+
+    time++;
+    continue;
+}
+            lastProcess = -2;
+        }
+        time++;
+        continue;
+    }
+
+    if (firstStart[best] == -1) {
+        firstStart[best] = time;
+        p[best].rt = time - p[best].at;
+    }
+
+    if (lastProcess != best) {
+        if (lastProcess != -1)
+            printf("%d -- ", time);
+
+        if (lastProcess != best) {
+    if (lastProcess != -1)
+        printf("%d -- ", time);
+
+    printf("P%d -- ", p[best].pid);
+    lastProcess = best;
+}
+        lastProcess = best;
+    }
+
+    remaining[best]--;
+    time++;
+
+    if (remaining[best] == 0) {
+        p[best].ct = time;
+        completed++;
+    }
+}
+      printf("%d\n", time);
     printf("\nPID\tAT\tBT\tCT\tTAT\tWT\tRT\n");
 
     for (int i = 0; i < n; i++) {
