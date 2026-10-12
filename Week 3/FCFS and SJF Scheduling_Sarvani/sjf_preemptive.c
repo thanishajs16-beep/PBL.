@@ -81,17 +81,15 @@ if (scanf("%d", &p[i].bt) != 1 || p[i].bt <= 0) {
             p[best].rt = time - p[best].at;
         }
 
-        printf("| P%d ", p[best].pid);
-        remaining[best]--;
-        time++;
-
+       printf("%d -- P%d -- ", time, p[best].pid);
+       remaining[best]--;
+       time++;
         if (remaining[best] == 0) {
             p[best].ct = time;
             completed++;
         }
     }
-
-    printf("|\n");
+   printf("%d\n", time);
     printf("\nPID\tAT\tBT\tCT\tTAT\tWT\tRT\n");
 
     for (int i = 0; i < n; i++) {

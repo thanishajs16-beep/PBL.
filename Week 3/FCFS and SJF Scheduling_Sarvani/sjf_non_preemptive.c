@@ -58,46 +58,48 @@ if (scanf("%d", &p[i].bt) != 1 || p[i].bt <= 0) {
 
     printf("\nGantt Chart:\n");
 
-    while (completed < n) {
-        int best = -1;
+    
+while (completed < n) {
+    int best = -1;
 
-        for (int i = 0; i < n; i++) {
-            if (!done[i] && p[i].at <= time &&
-                (best == -1 || p[i].bt < p[best].bt ||
-                (p[i].bt == p[best].bt &&
-                 p[i].at < p[best].at))) {
-                best = i;
-            }
+    for (int i = 0; i < n; i++) {
+        if (!done[i] && p[i].at <= time &&
+            (best == -1 || p[i].bt < p[best].bt ||
+             (p[i].bt == p[best].bt &&
+              p[i].at < p[best].at))) {
+            best = i;
         }
-
-        if (best == -1) {
-            printf("| IDLE ");
-            int next = -1;
-
-            for (int i = 0; i < n; i++) {
-                if (!done[i] &&
-                    (next == -1 || p[i].at < p[next].at))
-                    next = i;
-            }
-
-            time = p[next].at;
-            continue;
-        }
-
-        p[best].rt = time - p[best].at;
-        printf("| P%d ", p[best].pid);
-
-        time += p[best].bt;
-        p[best].ct = time;
-        p[best].tat = p[best].ct - p[best].at;
-        p[best].wt = p[best].tat - p[best].bt;
-
-        done[best] = 1;
-        completed++;
     }
 
-    printf("|\n");
-    printf("\nPID\tAT\tBT\tCT\tTAT\tWT\tRT\n");
+    if (best == -1) {
+        int next = -1;
+
+        for (int i = 0; i < n; i++) {
+            if (!done[i] &&
+                (next == -1 || p[i].at < p[next].at)) {
+                next = i;
+            }
+        }
+
+        printf("%d -- IDLE -- ", time);
+        time = p[next].at;
+        continue;
+    }
+
+    printf("%d -- P%d -- ", time, p[best].pid);
+
+    p[best].rt = time - p[best].at;
+    time += p[best].bt;
+    p[best].ct = time;
+    p[best].tat = p[best].ct - p[best].at;
+    p[best].wt = p[best].tat - p[best].bt;
+
+    done[best] = 1;
+    completed++;
+}
+
+    printf("%d\n", time);
+printf("\nPID\tAT\tBT\tCT\tTAT\tWT\tRT\n");
 
     for (int i = 0; i < n; i++) {
         printf("P%d\t%d\t%d\t%d\t%d\t%d\t%d\n",
