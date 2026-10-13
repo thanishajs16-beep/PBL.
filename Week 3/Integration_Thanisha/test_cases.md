@@ -185,4 +185,4 @@ Observation: Each process finishes within one time quantum in this test, so none
 
 ## Conclusion
 
-I tested all six scheduling options and recorded their Gantt charts and timing results. CPU utilization is different across these examples because the CPU has different amounts of idle time.
+Tested all six scheduling options and recorded their Gantt charts and timing results. CPU utilization is different across these examples because the CPU has different amounts of idle time.
