@@ -2,8 +2,7 @@
 
 ## Integration Test Cases
 
-These test cases are based on the runs made through `./scheduler` after building with `./build_week3.sh`. The repeated menu screens have been left out so the inputs and results are easier to read.
-
+These test cases are based on the runs made through `./scheduler` after building with `./build_week3.sh`. 
 ---
 
 ## Test Case 1: FCFS
@@ -233,5 +232,3 @@ CPU Utilization: 75.00%
 ## Conclusion
 
 These six runs cover all six scheduling algorithms in the integrated menu. The Gantt charts and reported metrics are consistent with the input values.
-
-For a stronger final check, run one more SJF Preemptive test where a shorter process arrives while another process is running. Also test Round Robin with a smaller quantum than at least one process's burst time. That will show the preemption and time-slicing behavior more clearly.
