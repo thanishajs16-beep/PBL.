@@ -1,18 +1,16 @@
-# Week 3 – Performance Analysis
+## Performance Analysis
 
-## Test Input
+For this test, I used 3 processes with a Round Robin time quantum of 2.
 
-Three processes were used for the performance comparison. The Round Robin time quantum was 2.
+Input:
 
-| Process ID | Arrival Time | Burst Time | Priority |
-|---|---:|---:|---:|
-| P1 | 0 | 8 | 3 |
-| P2 | 2 | 3 | 1 |
-| P3 | 3 | 1 | 2 |
+- P1: Arrival Time = 0, Burst Time = 8, Priority = 3
+- P2: Arrival Time = 2, Burst Time = 3, Priority = 1
+- P3: Arrival Time = 3, Burst Time = 1, Priority = 2
 
-## Performance Comparison
+Performance Comparison:
 
-| Algorithm | Average WT | Average TAT | Average RT | CPU Usage |
+| Algorithm | Avg WT | Avg TAT | Avg RT | CPU Usage |
 |---|---:|---:|---:|---:|
 | FCFS | 4.67 | 8.67 | 4.67 | 100.00% |
 | SJF Non-Preemptive | 4.00 | 8.00 | 4.00 | 100.00% |
@@ -23,14 +21,14 @@ Three processes were used for the performance comparison. The Round Robin time q
 
 WT = Waiting Time, TAT = Turnaround Time, RT = Response Time.
 
-## Observations
+Observations:
 
-- SJF Preemptive had the lowest average waiting time (1.67) and average turnaround time (5.67) in this run.
-- Priority Preemptive had an average waiting time of 2.00 and an average response time of 0.67.
-- Round Robin, with a time quantum of 2, had an average waiting time of 3.33 and an average response time of 1.00.
-- FCFS and Priority Non-Preemptive produced the same averages for these inputs.
-- CPU usage was 100% for every algorithm. The total burst time was 12 time units, and the CPU was busy from time 0 until time 12 without idle time.
+- SJF Preemptive had the lowest average waiting time and turnaround time in this test.
+- Priority Preemptive had an average waiting time of 2.00.
+- Round Robin had an average waiting time of 3.33 with a time quantum of 2.
+- FCFS and Priority Non-Preemptive gave the same results for these inputs.
+- CPU usage was 100% for all algorithms because the CPU had no idle time during the run.
 
-## Conclusion
+Conclusion:
 
-For this set of processes, SJF Preemptive gave the best average waiting and turnaround times. All six algorithms used the CPU continuously, so their CPU usage was 100%.
+For these inputs, SJF Preemptive gave the lowest average waiting time and turnaround time. All six algorithms had 100% CPU usage.
