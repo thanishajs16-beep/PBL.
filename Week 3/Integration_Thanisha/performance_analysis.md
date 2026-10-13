@@ -1,6 +1,6 @@
 ##  Performance Analysis
 
-For this test, I used 3 processes with a Round Robin time quantum of 2.
+For this test, three processes are scheduled using the Round Robin algorithm with a time quantum of 2.
 
 Input:
 
