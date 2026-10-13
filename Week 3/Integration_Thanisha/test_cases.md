@@ -2,7 +2,7 @@
 
 ## Integration Test Cases
 
-These test cases are based on the runs made through `./scheduler` after building with `./build_week3.sh`. 
+- These test cases are based on the runs made through `./scheduler` after building with `./build_week3.sh`. 
 ---
 
 ## Test Case 1: FCFS
