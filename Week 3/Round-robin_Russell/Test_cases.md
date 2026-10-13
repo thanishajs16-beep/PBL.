@@ -1,13 +1,13 @@
-# Week 3 – Process Scheduling
-## Student 3: Round Robin Scheduling
+## Week 3 – Process Scheduling
+Student 3: Round Robin Scheduling
   
 **Algorithm:** Round Robin (RR)
 
 ---
 
-## Test Case 1: All Processes Arrive at Time 0
+###  Test Case 1: All Processes Arrive at Time 0
 
-### Input
+Input
 
 Number of processes: `3`
 
@@ -55,9 +55,9 @@ CPU Utilization: 100.00%
 
 ---
 
-## Test Case 2: Different Arrival Times and Initial CPU Idle Time
+### Test Case 2: Different Arrival Times and Initial CPU Idle Time
 
-### Input
+ Input
 
 Number of processes: `3`
 
@@ -105,9 +105,9 @@ CPU Utilization: 81.82%
 
 ---
 
-## Test Case 3: Four Processes with an Intermediate CPU Idle Period
+### Test Case 3: Four Processes with an Intermediate CPU Idle Period
 
-### Input
+ Input
 
 Number of processes: `4`
 
@@ -162,6 +162,6 @@ CPU Utilization: 61.54%
 
 ---
 
-## Conclusion
+ Conclusion
 
 All three test cases verify Round Robin scheduling, including the Gantt chart, scheduling metrics, and CPU utilization.
