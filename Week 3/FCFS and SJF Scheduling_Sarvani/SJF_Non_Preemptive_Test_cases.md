@@ -1,7 +1,17 @@
 # SJF Non-Preemptive Scheduling — Test Cases
 
 **Algorithm:** Shortest Job First (Non-Preemptive)
+Description: SJF Non-Preemptive selects the available process with the shortest burst time.
 
+Working: The process with the shortest burst time executes first among the available processes.
+
+Preemption: No. Once execution starts, the process continues until completion.
+
+Advantages: Can reduce average waiting time when burst times are known.
+
+Disadvantages: Long processes may wait for a long time, and burst time must be estimated or known.
+
+Applications: Batch systems where process execution times can be estimated.
 ---
 
 ## Test Case 1: All Processes Arrive at Time 0
@@ -81,3 +91,20 @@ Average Response Time: 3.00
 ```
 
 **Result:** Once a process starts, it continues until completion. The shortest available process is selected next.
+###Performance Metrics
+
+Completion Time (CT): Time when a process finishes execution.
+
+Turnaround Time (TAT): Total time from arrival to completion.
+
+Waiting Time (WT): Total time a process spends waiting in the ready queue.
+
+Response Time (RT): Time between arrival and the process's first CPU execution.
+
+###Formulas
+
+TAT = CT − AT
+
+WT = TAT − BT
+
+RT = First CPU Start Time − AT

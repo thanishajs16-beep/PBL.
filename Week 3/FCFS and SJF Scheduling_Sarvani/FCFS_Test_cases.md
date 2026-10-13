@@ -1,7 +1,17 @@
 # FCFS Scheduling — Test Cases
 
 **Algorithm:** First Come First Serve (FCFS)
+Description: FCFS is a non-preemptive CPU scheduling algorithm in which the process that arrives first gets the CPU first.
 
+Working: Processes execute in order of arrival.
+
+Preemption: No. Once a process starts, it runs until completion.
+
+Advantages: Simple to implement and easy to understand.
+
+Disadvantages: A long process can make shorter processes wait for a long time (convoy effect).
+
+Applications: Simple batch-processing systems.
 ---
 
 ## Test Case 1: All Processes Arrive at Time 0
@@ -81,3 +91,21 @@ Average Response Time: 1.00
 ```
 
 **Result:** Processes execute in arrival order, and each process runs until completion.
+
+###Performance Metrics
+
+Completion Time (CT): Time when a process finishes execution.
+
+Turnaround Time (TAT): Total time from arrival to completion.
+
+Waiting Time (WT): Total time a process spends waiting in the ready queue.
+
+Response Time (RT): Time between arrival and the process's first CPU execution.
+
+###Formulas
+
+TAT = CT − AT
+
+WT = TAT − BT
+
+RT = First CPU Start Time − AT
