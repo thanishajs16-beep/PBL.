@@ -1,0 +1,36 @@
+PRIORITY SCHEDULING — TEST OUTPUTS
+===================================
+
+IMPORTANT:
+These sections are ready for you to paste the ACTUAL output from your program.
+Do not submit these headings alone as proof of execution.
+
+TEST CASE 1 — Different priorities
+Algorithm: Non-Preemptive Priority
+Paste actual console output here.
+
+Algorithm: Preemptive Priority
+Paste actual console output here.
+
+Explanation:
+All processes arrive at time 0. The process order should follow the priority rule used by the program. Check the Gantt chart, CT, TAT, WT, RT, and averages if displayed.
+
+------------------------------------------------------------
+
+TEST CASE 2 — Different arrival times
+Algorithm: Non-Preemptive Priority
+Paste actual console output here.
+
+Algorithm: Preemptive Priority
+Paste actual console output here.
+
+Explanation:
+A higher-priority process arrives while another process is running. Non-preemptive scheduling should not interrupt the running process; preemptive scheduling should interrupt it if the new process has higher priority, according to the program's priority convention.
+
+------------------------------------------------------------
+
+TEST CASE 3 — Duplicate PID
+Paste actual console output showing the duplicate PID error here.
+
+Explanation:
+P1 is entered twice. The program should reject duplicate process IDs and should not continue to produce a normal schedule for invalid input.

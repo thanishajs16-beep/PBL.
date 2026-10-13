@@ -1,0 +1,31 @@
+PRIORITY SCHEDULING — TEST CASES
+================================
+
+Important:
+- Use the same priority convention as your program.
+- If a smaller priority number means higher priority, use the values below as written.
+- Run each test using BOTH Priority Non-Preemptive and Priority Preemptive modes.
+
+TEST CASE 1 — Different priorities; all arrive at time 0
+Number of processes: 3
+PID   Arrival Time   Burst Time   Priority
+P1    0              4            3
+P2    0              3            1
+P3    0              2            2
+Purpose: Check that processes are selected according to priority.
+
+TEST CASE 2 — Different arrival times; preemption check
+Number of processes: 3
+PID   Arrival Time   Burst Time   Priority
+P1    0              7            3
+P2    2              3            1
+P3    4              2            2
+Purpose: Check whether a newly arrived higher-priority process preempts the running process in preemptive scheduling. In non-preemptive scheduling, the running process should continue until it finishes.
+
+TEST CASE 3 — Duplicate process ID validation
+Number of processes: 3
+PID   Arrival Time   Burst Time   Priority
+P1    0              4            2
+P2    1              3            1
+P1    2              2            3
+Purpose: The program should reject the repeated PID P1 and display an error instead of scheduling these processes.
