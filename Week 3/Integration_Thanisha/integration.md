@@ -1,34 +1,40 @@
-# Week 3 – Process Scheduling Integration
+## Week 3 – Process Scheduling Integration
 
-## Overview
+Overview
 
-The integration program brings the six CPU scheduling algorithms together in one menu-driven program. Instead of running each option separately, the user can choose an algorithm from the menu, enter the process details, and view its scheduling results.
+The integration program brings all six process scheduling algorithms into one menu-driven application. It provides a single entry point for selecting an algorithm and viewing its results, instead of running the algorithms as separate programs.
 
-## Algorithms Included
+ Integration Details
 
-- **FCFS:** Processes run in the order they arrive.
-- **SJF Non-Preemptive:** The available process with the shortest burst time runs until it finishes.
-- **SJF Preemptive:** The process with the shortest remaining time runs, and it can be interrupted when a shorter job arrives.
-- **Priority Non-Preemptive:** The available process with the highest priority runs until it finishes.
-- **Priority Preemptive:** A running process can be interrupted when a higher-priority process arrives.
-- **Round Robin:** Processes take turns using a set time quantum.
+The `integration.c` file connects the scheduling implementations and displays the main menu. The user selects an option to run an algorithm or compare their performance. The integration keeps the available algorithms together in one program without requiring their individual implementations to be rewritten.
 
-## How It Works
+The menu includes:
 
-The user selects an option from the menu and enters the number of processes, process IDs, arrival times, burst times, and priorities. Round Robin also asks for a time quantum. Option 7 runs a performance comparison using the same process details across all six algorithms, making their results easier to compare. Option 0 exits the program.
+1. FCFS
+2. SJF Non-Preemptive
+3. SJF Preemptive
+4. Priority Non-Preemptive
+5. Priority Preemptive
+6. Round Robin
+7. Performance Comparison
+0. Exit
 
-## Results Displayed
+ Algorithms Included
 
-For an individual scheduling algorithm, the program displays a Gantt chart showing the order in which processes run, followed by a table containing:
+- **FCFS:** Runs processes in arrival order.
+- **SJF Non-Preemptive:** Runs the available process with the shortest burst time until it finishes.
+- **SJF Preemptive:** Runs the process with the shortest remaining time and can switch when a shorter job arrives.
+- **Priority Non-Preemptive:** Runs the available process with the highest priority until it finishes.
+- **Priority Preemptive:** Can interrupt a running process when a higher-priority process arrives.
+- **Round Robin:** Gives each process a turn using a configurable time quantum.
 
-- **CT (Completion Time):** When a process finishes.
-- **TAT (Turnaround Time):** Total time from arrival to completion.
-- **WT (Waiting Time):** Total time spent waiting in the ready queue.
-- **RT (Response Time):** Time from arrival until the process first gets the CPU.
+ Results
 
-It also displays the average waiting, turnaround, and response times, along with total elapsed time, CPU busy time, CPU idle time, and CPU utilization. The performance comparison option presents the average metrics and CPU usage for all six algorithms in one table.
+For an individual algorithm, the program displays a Gantt chart and a table with each process's completion time (CT), turnaround time (TAT), waiting time (WT), and response time (RT). It also displays the average waiting, turnaround, and response times, along with elapsed time, busy time, idle time, and CPU utilization.
 
-## Build and Run
+The **Performance Comparison** option compares the results of all six algorithms using the same process details. This makes it easier to compare their waiting, turnaround, and response times, as well as CPU utilization.
+
+Build and Run
 
 From the Week 3 project folder, run:
 
@@ -37,4 +43,4 @@ From the Week 3 project folder, run:
 ./scheduler
 ```
 
-The build script compiles the scheduling project and creates the `scheduler` executable. Run the executable to open the menu and test the algorithms.
+The build script compiles the project and creates the `scheduler` executable. Running it opens the process scheduling menu.
