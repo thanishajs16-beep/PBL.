@@ -1,0 +1,58 @@
+PAGE REPLACEMENT SIMULATOR
+
+ 1. Introduction
+Memory management is an important function of an operating system. When a process requests a page that is not currently in main memory, a page fault occurs. If all available frames are occupied, the operating system may need to remove an existing page to make room. The rule used to choose the page to remove is called a page replacement algorithm.
+This project simulates three page replacement algorithms: First-In, First-Out (FIFO), Least Recently Used (LRU), and Optimal. It accepts a page-reference string and a frame count, runs the selected algorithm, and allows their results to be compared.
+
+2. Problem Statement
+The project provides a way to observe how page replacement algorithms handle a sequence of page references. It shows page hits and page faults and helps users compare algorithms using the same input.
+
+3. Objectives
+• Implement FIFO, LRU, and Optimal page replacement algorithms.
+• Accept a page-reference string and the number of available frames.
+• Identify page hits and page faults during simulation.
+• Display results for individual algorithms and support comparison.
+• Validate inputs and test the program with representative examples.
+• Provide a graphical interface for entering input and viewing results.
+
+4. Algorithms Used
+4.1 First-In, First-Out (FIFO): FIFO replaces the page that has been in memory the longest. It follows the order in which pages entered the frames. It is simple to implement, but it does not consider how recently or how frequently a page has been used.
+4.2 Least Recently Used (LRU): LRU replaces the page that has not been used for the longest time in the past. It uses recent reference history to estimate which page may be needed again.
+4.3 Optimal: Optimal replaces the page whose next use is farthest in the future, or which will not be used again. For a given reference string and frame count, it provides the minimum possible number of page faults. Since future references are not known in advance in a real system, it is mainly useful as a benchmark.
+
+5. System Design and Integration
+The application is organized into separate source files so the algorithm implementations and comparison logic can be compiled together. The common header (common.h) provides shared declarations used by the modules.
+fifo.c: contains the FIFO implementation.
+lru.c: contains the LRU implementation.
+optimal.c: contains the Optimal implementation.
+comparison.c: supports the algorithm comparison functionality.
+gui.c: provides the graphical user interface.
+test_integration.c: provides a console-based integration/test entry point.
+build.sh: contains build commands for the available build targets.
+The GUI and console integration test have separate entry points, so they should be built as separate executables. The build script can compile the console test program and GUI target separately.
+
+6. How to Use the Simulator
+1. Build the project and launch the GUI executable.
+2. Enter the page-reference string, using spaces between page numbers.
+3. Enter a positive number of frames.
+4. Select FIFO, LRU, Optimal, or the option to compare all algorithms.
+5. Run the simulation and inspect the displayed hits, faults, and comparison results.
+6. Repeat with other reference strings or frame counts to compare behaviour.
+Exact menu labels and result layout may vary slightly with the current GUI version.
+
+7. Testing and Results
+The following test was run through the GUI. Page-reference string: 7 0 1 2 0 3 0 4 2 3. Number of frames: 3. The sequence contains 10 page references.
+
+8. Result Analysis
+FIFO recorded 1 hit and 9 page faults. LRU recorded 2 hits and 8 page faults. Optimal recorded 4 hits and 6 page faults. For this input, Optimal produced the fewest page faults, followed by LRU and then FIFO.
+Hit ratio = (number of hits ÷ total page references) × 100. Fault ratio = (number of page faults ÷ total page references) × 100.
+9. Testing Table
+Algorithm	Hits	Faults	Hit Ratio	Fault Ratio
+FIFO	1	9	10%	90%
+LRU	2	8	20%	80%
+Optimal	4	6	40%	60%
+Total page references: 10. Ratios are calculated from the reported hits and faults.
+
+10. Conclusion
+The project demonstrates the behaviour of FIFO, LRU, and Optimal page replacement algorithms using a common page-reference string and frame count. The results show that the choice of algorithm can affect the number of page faults. For the tested input, Optimal performed best by producing the fewest page faults. Results may differ for other reference strings and frame counts.
+
