@@ -20,8 +20,7 @@ static void display_frame_table(
     for (size_t i = 0; i < result->reference_count; i++) {
         printf("%4s",
                result->step_status[i] == PAGE_STEP_HIT
-                   ? "H"
-                   : "F");
+                   ? "H" : "F");
     }
 
     printf("\n");
@@ -47,12 +46,40 @@ static void display_frame_table(
 
 int main(void)
 {
-    int pages[] = {7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2};
+    int pages[100];
+    size_t reference_count;
+    size_t frame_count;
+
+    printf("Page Replacement Simulator - Integration\n");
+
+    printf("\nEnter number of page references (1-100): ");
+    if (scanf("%zu", &reference_count) != 1 ||
+        reference_count < 1 || reference_count > 100) {
+        printf("Invalid number of page references.\n");
+        return 1;
+    }
+
+    printf("Enter %zu page references separated by spaces: ",
+           reference_count);
+
+    for (size_t i = 0; i < reference_count; i++) {
+        if (scanf("%d", &pages[i]) != 1 || pages[i] < 0) {
+            printf("Invalid page reference.\n");
+            return 1;
+        }
+    }
+
+    printf("Enter number of frames (1-100): ");
+    if (scanf("%zu", &frame_count) != 1 ||
+        frame_count < 1 || frame_count > 100) {
+        printf("Invalid number of frames.\n");
+        return 1;
+    }
 
     PageReferenceInput input = {
         pages,
-        sizeof(pages) / sizeof(pages[0]),
-        3
+        reference_count,
+        frame_count
     };
 
     PageComparisonResult comparison = {0};
@@ -66,8 +93,7 @@ int main(void)
         return 1;
     }
 
-    printf("\nPage Replacement Algorithm Comparison\n");
-    printf("-------------------------------------\n");
+    printf("\n===== Algorithm Comparison =====\n");
 
     for (int i = 0; i < PAGE_ALGORITHM_COUNT; i++) {
         PageSimulationResult *result = &comparison.results[i];
@@ -91,7 +117,8 @@ int main(void)
     int first = 1;
 
     for (int i = 0; i < PAGE_ALGORITHM_COUNT; i++) {
-        if (comparison.best_algorithms_mask & PAGE_ALGORITHM_BIT(i)) {
+        if (comparison.best_algorithms_mask &
+            PAGE_ALGORITHM_BIT(i)) {
             if (!first) {
                 printf(", ");
             }
