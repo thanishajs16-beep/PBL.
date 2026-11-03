@@ -8,7 +8,7 @@ The Multi-Process Simulator consists of three independent processes:
 - **Student 4 – Core Process:** Processes commands and integrates CPU, Memory, Stack, and Queue.
 - **Student 3 – Logging Process:** Receives log messages and stores them in `simulator.log`.
 
-The processes communicate using **POSIX Message Queues**.
+The processes communicate using **POSIX IPC MECHANISMS**
 
 ## 2. Architecture Diagram
 
@@ -21,7 +21,7 @@ The processes communicate using **POSIX Message Queues**.
                   | ui_process.c  |
                   +---------------+
                           |
-                          | POSIX Message Queue
+                          | 
                           | UI → Core
                           v
                   +------------------+
@@ -35,7 +35,7 @@ The processes communicate using **POSIX Message Queues**.
                 |.c   | |.c    | |.c   | |.c    |
                 +-----+ +------+ +-----+ +-------+
                           |
-                          | POSIX Message Queue
+                          | 
                           | Core → Logger
                           v
                   +-------------------+
@@ -79,4 +79,4 @@ Core Process
 
 ## 5. Integration
 
-The Team Leader integrates the UI, Core, and Logging processes using POSIX Message Queues. The Core Process acts as the central component connecting the user commands with the simulator modules and logging system.
+The Team Leader integrates the UI, Core, and Logging processes using POSIX IPC mechanisms. The Core Process acts as the central component connecting the user commands with the simulator modules and logging system.
