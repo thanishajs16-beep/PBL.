@@ -1,46 +1,46 @@
-#include <stdio.h>
-
 #define QUEUE_SIZE 100
 
-int queue[QUEUE_SIZE];
-int front = 0;
-int rear = -1;
-int count = 0;
+static int queue[QUEUE_SIZE];
+static int front = 0;
+static int rear = -1;
+static int item_count = 0;
 
 void enqueue(int value)
 {
-    if (count == QUEUE_SIZE) {
-        printf("Error: Queue overflow\n");
+    if (item_count >= QUEUE_SIZE) {
         return;
     }
 
     rear = (rear + 1) % QUEUE_SIZE;
     queue[rear] = value;
-    count++;
-
-    printf("Enqueued %d\n", value);
+    item_count++;
 }
 
-int dequeue()
+int dequeue(void)
 {
     int value;
 
-    if (count == 0) {
-        printf("Error: Queue underflow\n");
+    if (item_count == 0) {
         return -1;
     }
 
     value = queue[front];
     front = (front + 1) % QUEUE_SIZE;
-    count--;
+    item_count--;
+
+    if (item_count == 0) {
+        rear = front - 1;
+        if (rear < 0) {
+            rear = QUEUE_SIZE - 1;
+        }
+    }
 
     return value;
 }
 
-int queue_peek()
+int queue_peek(void)
 {
-    if (count == 0) {
-        printf("Queue is empty\n");
+    if (item_count == 0) {
         return -1;
     }
 
