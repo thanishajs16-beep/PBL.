@@ -1,35 +1,27 @@
-#include <stdio.h>
-
 #define STACK_SIZE 100
 
-int stack[STACK_SIZE];
-int top = -1;
+static int stack[STACK_SIZE];
+static int top = -1;
 
 void push(int value)
 {
-    if (top == STACK_SIZE - 1) {
-        printf("Error: Stack overflow\n");
-        return;
+    if (top < STACK_SIZE - 1) {
+        stack[++top] = value;
     }
-
-    stack[++top] = value;
-    printf("Pushed %d\n", value);
 }
 
-int pop()
+int pop(void)
 {
-    if (top == -1) {
-        printf("Error: Stack underflow\n");
+    if (top < 0) {
         return -1;
     }
 
     return stack[top--];
 }
 
-int peek()
+int peek(void)
 {
-    if (top == -1) {
-        printf("Stack is empty\n");
+    if (top < 0) {
         return -1;
     }
 
